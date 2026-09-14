@@ -1,0 +1,1463 @@
+/* ==========================================================================
+   UTAH TECH TENNIS CLUB - MODERN TECH DESIGN SYSTEM
+   Palette Strictly Constrained: White, Rock Red, Brooks Blue
+   ========================================================================== */
+
+:root {
+  /* Core Brand Colors */
+  --brooks-blue: #002855;
+  --brooks-blue-deep: #001938;
+  --brooks-blue-dark: #001229;
+  --brooks-blue-surface: #032047;
+  --brooks-blue-card: rgba(0, 40, 85, 0.72);
+  --brooks-blue-hover: #003774;
+  --brooks-blue-border: rgba(0, 40, 85, 0.5);
+
+  --rock-red: #BA1C21;
+  --rock-red-light: #D62228;
+  --rock-red-dark: #8F1216;
+  --rock-red-glow: rgba(186, 28, 33, 0.4);
+  --rock-red-subtle: rgba(186, 28, 33, 0.12);
+
+  --white: #FFFFFF;
+  --white-90: rgba(255, 255, 255, 0.90);
+  --white-75: rgba(255, 255, 255, 0.75);
+  --white-50: rgba(255, 255, 255, 0.50);
+  --white-20: rgba(255, 255, 255, 0.20);
+  --white-10: rgba(255, 255, 255, 0.10);
+  --white-05: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Tech Accents */
+  --tech-glow-red: 0 0 25px rgba(186, 28, 33, 0.45);
+  --tech-glow-blue: 0 0 30px rgba(0, 40, 85, 0.65);
+  --tech-border-glow: 1px solid rgba(255, 255, 255, 0.18);
+  --card-radius: 16px;
+  --btn-radius: 9999px;
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--brooks-blue-dark);
+  color: var(--white);
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.65;
+  background-color: var(--brooks-blue-dark);
+  color: var(--white-90);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* High-Tech Court Background Grid */
+.tech-bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 80%);
+}
+
+.tech-court-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(186, 28, 33, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(0, 40, 85, 0.7) 0%, transparent 50%);
+}
+
+/* Content Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (Prominently Centers Utah Tech Logo at Middle Top)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 24, 51, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: var(--transition-smooth);
+}
+
+.site-header.scrolled {
+  background: rgba(0, 18, 41, 0.96);
+  border-bottom-color: var(--rock-red);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+}
+
+/* Hero Brand Logo Anchor */
+.middle-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.main-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 480px;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.main-logo-link:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.main-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  display: block;
+}
+
+
+/* Navigation Links Row */
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 32px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white-75);
+  border-radius: 8px;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 20px;
+  height: 2px;
+  background: var(--rock-red);
+  border-radius: 2px;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Header Action Button (Instagram Group Chat) */
+.nav-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--rock-red);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--rock-red-light);
+  box-shadow: 0 2px 12px var(--rock-red-glow);
+  transition: var(--transition-smooth);
+}
+
+.nav-action-btn:hover {
+  background: var(--rock-red-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px var(--rock-red-glow);
+  color: var(--white);
+}
+
+.nav-action-btn svg {
+  fill: currentColor;
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--white-20);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  margin: 4px 0;
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   TOP-LEFT LOGO: unnamed.png (USTA Tennis On Campus Shield)
+   Placed at the top left below the navigation bar
+   ========================================================================== */
+.subnav-badge-bar {
+  position: relative;
+  z-index: 100;
+  padding-top: 14px;
+}
+
+.subnav-affiliate-badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.toc-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 40, 85, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 8px 16px 8px 10px;
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: var(--transition-smooth);
+}
+
+.toc-badge-link:hover {
+  border-color: var(--rock-red);
+  background: rgba(0, 40, 85, 0.98);
+  box-shadow: 0 8px 24px rgba(186, 28, 33, 0.35);
+  transform: translateX(4px);
+}
+
+.toc-logo-shield {
+  width: 50px;
+  height: 50px;
+  object-fit: scale-down;
+  padding: 4px;
+  border-radius: 10%;
+}
+
+.toc-badge-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-badge-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white-75);
+}
+
+.toc-badge-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   HERO BANNER SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 40px 0 80px;
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(186, 28, 33, 0.18);
+  border: 1px solid var(--rock-red);
+  border-radius: var(--btn-radius);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.hero-pill-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--rock-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--rock-red);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 14px var(--rock-red);
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.hero-title-accent {
+  color: var(--white);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 8px;
+  background: var(--rock-red);
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--white-90);
+  max-width: 780px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+}
+
+/* Hero CTA Buttons */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--rock-red);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--rock-red-light);
+  box-shadow: 0 4px 20px var(--rock-red-glow);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  background: var(--rock-red-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--rock-red-glow);
+  color: var(--white);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: rgba(0, 40, 85, 0.7);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--btn-radius);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: var(--brooks-blue);
+  border-color: var(--white);
+  transform: translateY(-2px);
+  color: var(--white);
+}
+
+/* Modern Tech Stat Counters */
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.stat-card {
+  background: rgba(0, 40, 85, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--card-radius);
+  padding: 20px 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--rock-red), transparent);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rock-red);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-value-suffix {
+  color: var(--rock-red);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--white-75);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SECTION COMMON STYLES
+   ========================================================================== */
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rock-red);
+  margin-bottom: 12px;
+  display: inline-block;
+  background: rgba(186, 28, 33, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--btn-radius);
+  border: 1px solid rgba(186, 28, 33, 0.3);
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--white-75);
+}
+
+/* ==========================================================================
+   ABOUT SECTION (Modeled after Stanford Club Tennis)
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.about-text-card {
+  background: rgba(0, 40, 85, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--card-radius);
+  padding: 36px;
+  backdrop-filter: blur(12px);
+}
+
+.about-paragraph {
+  font-size: 1.05rem;
+  color: var(--white-90);
+  margin-bottom: 20px;
+  line-height: 1.75;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(0, 24, 51, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 20px;
+  transition: var(--transition-smooth);
+}
+
+.highlight-item:hover {
+  border-color: var(--rock-red);
+  transform: translateX(6px);
+  background: rgba(0, 40, 85, 0.85);
+}
+
+.highlight-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(186, 28, 33, 0.18);
+  border: 1px solid var(--rock-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--white);
+}
+
+.highlight-icon-box svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.highlight-text h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--white);
+}
+
+.highlight-text p {
+  font-size: 0.9rem;
+  color: var(--white-75);
+}
+
+/* ==========================================================================
+   PRACTICE & SCHEDULE SECTION (Next to Innovation Plaza)
+   Replaces Tryouts with rich, useful tennis club logistics
+   ========================================================================== */
+.schedule-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+}
+
+.schedule-card {
+  background: rgba(0, 40, 85, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--card-radius);
+  padding: 36px;
+  backdrop-filter: blur(12px);
+}
+
+.court-location-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(186, 28, 33, 0.15);
+  border: 1px solid var(--rock-red);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.location-marker-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--rock-red);
+}
+
+.location-marker-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.location-details h4 {
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.location-details p {
+  font-size: 0.88rem;
+  color: var(--white-75);
+}
+
+.practice-session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(0, 24, 51, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid var(--rock-red);
+  transition: var(--transition-smooth);
+}
+
+.session-row:hover {
+  background: rgba(0, 36, 77, 0.8);
+  border-color: rgba(255, 255, 255, 0.25);
+  border-left-color: var(--white);
+  transform: translateX(4px);
+}
+
+.session-day {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.session-focus {
+  font-size: 0.85rem;
+  color: var(--white-75);
+}
+
+.session-time-chip {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--btn-radius);
+  color: var(--white);
+}
+
+/* Practice Side Info Card & Instagram Group Chat Link */
+.practice-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tech-info-box {
+  background: rgba(0, 40, 85, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--card-radius);
+  padding: 30px;
+  backdrop-filter: blur(12px);
+}
+
+.tech-info-box h4 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tech-info-box p {
+  font-size: 0.95rem;
+  color: var(--white-75);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.groupchat-feature-card {
+  border: 2px solid var(--rock-red);
+  background: linear-gradient(145deg, rgba(0, 40, 85, 0.85) 0%, rgba(186, 28, 33, 0.2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.groupchat-feature-card::after {
+  content: 'INSTAGRAM LIVE';
+  position: absolute;
+  top: 14px;
+  right: -28px;
+  transform: rotate(45deg);
+  background: var(--rock-red);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 32px;
+}
+
+.groupchat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--rock-red);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  border: 1px solid var(--rock-red-light);
+  box-shadow: 0 4px 16px var(--rock-red-glow);
+  transition: var(--transition-smooth);
+}
+
+.groupchat-btn:hover {
+  background: var(--rock-red-light);
+  color: var(--white);
+  box-shadow: 0 6px 24px var(--rock-red-glow);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   LEADERSHIP SECTION
+   - 4 Officers: President, VP, Treasurer, Secretary (Fixed Order Left-to-Right)
+   - 8 Senators: Shuffled randomly on every reload using JavaScript
+   ========================================================================== */
+.leadership-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.leadership-group-title {
+  font-size: 1.4rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shuffle-control-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shuffle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.shuffle-btn:hover {
+  background: var(--rock-red);
+  border-color: var(--rock-red);
+}
+
+.shuffle-btn.spinning svg {
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.shuffle-status-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--white-75);
+}
+
+.shuffle-status-tag.flash {
+  color: var(--white);
+  text-shadow: 0 0 10px var(--rock-red);
+}
+
+/* Grid Layouts */
+.officers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.senators-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Modern Tech Leader Card */
+.leader-card {
+  background: rgba(0, 32, 70, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+}
+
+.leader-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rock-red);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px var(--rock-red-glow);
+}
+
+.card-inner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-tech-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.tech-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: var(--btn-radius);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.officer-badge {
+  background: rgba(186, 28, 33, 0.2);
+  color: var(--white);
+  border: 1px solid var(--rock-red);
+}
+
+.senator-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rock-red);
+}
+
+.badge-dot.red {
+  background: var(--white);
+}
+
+.officer-order-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--white-50);
+}
+
+.senator-committee {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--white-75);
+  max-width: 140px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Leader Photo Container */
+.leader-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: var(--brooks-blue);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 16px;
+}
+
+.leader-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.leader-card:hover .leader-img {
+  transform: scale(1.04);
+}
+
+.leader-img.fallback-logo {
+  object-fit: contain;
+  padding: 24px;
+  background: var(--white);
+}
+
+.image-tech-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 75%, rgba(186, 28, 33, 0.15) 100%);
+}
+
+/* Leader Info */
+.leader-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.leader-name {
+  font-size: 1.15rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.leader-role-sub {
+  font-size: 0.85rem;
+  color: var(--white-75);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.leader-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--white-75);
+}
+
+.leader-bio {
+  font-size: 0.86rem;
+  color: var(--white-75);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.leader-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--white-90);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.leader-contact-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   FAQ SECTION (Adapted from Stanford Club Tennis)
+   ========================================================================== */
+.faq-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: rgba(0, 40, 85, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.faq-item.active {
+  border-color: var(--rock-red);
+  background: rgba(0, 32, 70, 0.85);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.faq-question {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+
+.faq-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.faq-toggle-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--white);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.faq-item.active .faq-toggle-icon {
+  transform: rotate(180deg);
+  background: var(--rock-red);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-size: 0.95rem;
+  color: var(--white-90);
+  line-height: 1.7;
+}
+
+.faq-answer-inner a {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: var(--rock-red);
+  font-weight: 600;
+}
+
+.faq-answer-inner a:hover {
+  color: var(--rock-red);
+}
+
+/* ==========================================================================
+   FOOTER (Dual Logos: Utah Tech Stacked Logo + unnamed.png)
+   Placed prominently at the bottom of the main page
+   ========================================================================== */
+.site-footer {
+  background: var(--brooks-blue-deep);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 70px 0 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-top-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* Dual Logo Showcase Container at Page Bottom */
+.footer-dual-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 24px 36px;
+  margin-bottom: 28px;
+}
+
+.footer-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-img-ut {
+  height: 160px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-logo-img-usta {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-logo-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white-75);
+}
+
+.footer-logo-divider {
+  width: 1px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.footer-mission-text {
+  max-width: 640px;
+  font-size: 0.95rem;
+  color: var(--white-75);
+  margin-bottom: 24px;
+}
+
+.footer-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.footer-nav-link {
+  font-size: 0.9rem;
+  color: var(--white-75);
+}
+
+.footer-nav-link:hover {
+  color: var(--white);
+}
+
+.footer-social-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.social-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  transition: var(--transition-smooth);
+}
+
+.social-icon-btn:hover {
+  background: var(--rock-red);
+  border-color: var(--rock-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--rock-red-glow);
+}
+
+.social-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-bottom-copy {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--white-50);
+}
+
+.footer-bottom-copy a {
+  color: var(--white-75);
+}
+
+.footer-bottom-copy a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--brooks-blue);
+  border: 1px solid var(--rock-red);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: var(--transition-smooth);
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  background: var(--rock-red);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--rock-red-glow);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .officers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .senators-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about-grid,
+  .schedule-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-row {
+    justify-content: space-between;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 18, 41, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 2px solid var(--rock-red);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    display: none;
+  }
+
+  .nav-menu.is-active {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .officers-grid,
+  .senators-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-dual-logos {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-logo-divider {
+    width: 80%;
+    height: 1px;
+  }
+
+  .footer-bottom-copy {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
