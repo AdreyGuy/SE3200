@@ -260,3 +260,26 @@ function initScrollEffects() {
     });
   }
 }
+
+/* Weather API Fetch */
+async function loadWeather() {
+  // Example using Open-Meteo (No API key required)
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=37.0965&longitude=-113.5684&current=temperature_2m,weather_code&daily=precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FDenver';
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    const temp = Math.round(data.current.temperature_2m);
+    const rainChance = data.daily?.precipitation_probability_max?.[0] ?? 0;
+    const display = document.getElementById('weather-display');
+    if (display) {
+      display.innerText += ` ${temp}°F  |  ${rainChance}% 💧`;
+    }
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
+}
+
+loadWeather();
