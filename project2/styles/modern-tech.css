@@ -1477,4 +1477,43 @@ a {
     text-align: center;
     gap: 8px;
   }
+
+  /* Enhanced Mobile Navigation Action Buttons & Icons */
+  .nav-action-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .nav-action-btn svg {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+  }
+
+  /* Enhanced Hero CTA Buttons & Icons on Mobile */
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 1.05rem;
+    gap: 12px;
+  }
+
+  .hero-cta-group .btn-primary svg,
+  .hero-cta-group .btn-secondary svg {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
 }
