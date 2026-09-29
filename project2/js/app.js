@@ -285,7 +285,6 @@ async function loadWeather() {
 }
 
 /* Personal Groupme API Fetch */
-app.listen(8008, () => console.log('Proxy API running on port 8008'));
 async function getMemberCount() {
     // Call server (localhost:8008)
     const response = await fetch('http://localhost:8008/api/member-count');
