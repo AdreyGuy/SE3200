@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initMobileNav();
   initScrollEffects();
+  getMemberCount();
+  loadWeather();
 });
 
 /**
@@ -282,4 +284,10 @@ async function loadWeather() {
   }
 }
 
-loadWeather();
+/* Personal Groupme API Fetch */
+async function getMemberCount() {
+    // Call server (localhost:8008)
+    const response = await fetch('http://localhost:8008/api/member-count');
+    const data = await response.json();
+    document.getElementsByClassName('stat-number')[1].innerText = data.count;
+}
